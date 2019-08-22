@@ -1,0 +1,14 @@
+<mat-card class="container">
+    <mat-card-title>
+        <span>Add yours:</span>
+    </mat-card-title>
+    <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <input matInput placeholder="Your name" formControlName="name">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <textarea matInput cdkTextareaAutosize placeholder="Your thoughts" formControlName="text"></textarea>
+        </mat-form-field>
+        <button mat-stroked-button color="primary" type="submit">Post!</button>
+    </form>
+</mat-card>

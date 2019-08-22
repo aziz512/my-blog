@@ -1,0 +1,12 @@
+<mat-card class="post-card">
+    <mat-card-title>
+        <a class="post-title" routerLink="/{{post.id}}">{{post.title}}</a>
+    </mat-card-title>
+    <mat-card-subtitle>{{post.dateTime | timeAgo}}</mat-card-subtitle>
+    <mat-card-content class="description">
+        {{post.description}}
+    </mat-card-content>
+    <mat-card-actions [align]="'end'">
+        <a class="post-title" routerLink="/{{post.id}}" mat-raised-button>Read full post</a>
+    </mat-card-actions>
+</mat-card>
