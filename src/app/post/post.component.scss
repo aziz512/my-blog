@@ -1,7 +1,18 @@
 .post-content {
-    font-size: 17px;
+    font-size: 20px;
     line-height: 30px;
-    //padding: 0 30px;
+    font-weight: 200;
+
+    img {
+      max-width: 100%;
+      height:auto !important;
+    }
+}
+
+.post-title {
+  font-weight: 500;
+  font-size: 36px;
+  margin: 10px 0;
 }
 
 .comment {

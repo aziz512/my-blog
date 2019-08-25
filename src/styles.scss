@@ -3,8 +3,18 @@
 
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 16px;
-    background-color: #fafafa;
+    // background-color: #fafafa;
     margin: 0;
+}
+
+
+.date {
+  font-weight: 100;
+  color: #606060;
+}
+
+.accent-color {
+  color: #003171;
 }

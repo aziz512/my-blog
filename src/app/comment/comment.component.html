@@ -1,8 +1,8 @@
 <mat-card class="comment">
     <mat-card-title>
-        <span>{{ comment.name }}</span>
+        <span class="accent-color">{{ comment.name }}</span>
     </mat-card-title>
-    <mat-card-subtitle>{{comment.dateTime | timeAgo}}</mat-card-subtitle>
+    <mat-card-subtitle>{{comment.dateTime | dateFormat}}</mat-card-subtitle>
     <mat-card-content class="post-content">
         {{ comment.text }}
     </mat-card-content>

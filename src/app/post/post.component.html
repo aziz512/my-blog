@@ -1,23 +1,14 @@
-<div *ngIf="post$ | async; let post">
-    <mat-card class="post-card">
-        <mat-card-title>
-            <span>{{post.title}}</span>
-        </mat-card-title>
-        <mat-card-subtitle>{{post.dateTime | timeAgo}}</mat-card-subtitle>
-        <mat-card-content class="post-content">
-            <div [innerHTML]="post.content | safeHtml">
-            </div>
-        </mat-card-content>
-        <mat-card-actions [align]="'end'">
-            
-        </mat-card-actions>
-    </mat-card>
-    <div class="comments-label">
-        <strong>Comments:</strong>
+<div *ngIf="post$ | async; let post" class="post">
+    <h1 class="post-title accent-color">{{post.title}}</h1>
+    <div class="date">{{post.dateTime | dateFormat}}</div>
+    <div [innerHTML]="post.content | safeHtml" class="post-content"></div>
+
+    <div class="comments-label accent-color">
+      <h3>Comments:</h3>
     </div>
-    
+
     <div *ngIf="comments$ | async; let comments">
-        <blog-comment *ngFor="let comment of comments" [comment]="comment"></blog-comment>
-    </div>    
+      <blog-comment *ngFor="let comment of comments" [comment]="comment"></blog-comment>
+    </div>
     <blog-add-comment [postId]="post.id"></blog-add-comment>
 </div>

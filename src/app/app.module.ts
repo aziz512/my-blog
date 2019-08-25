@@ -14,11 +14,12 @@ import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './post/post.component';
 import { FirebaseService } from './firebase.service';
 import { SafeHtmlPipe } from './safe-html.pipe';
-import { RelativeTimePipe } from './relative-time.pipe';
+import { DateFormatterPipe } from './date-formatter.pipe';
 import { AddCommentComponent } from './add-comment/add-comment.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { CommentComponent } from './comment/comment.component';
+import { AddPostComponent } from './add-post/add-post.component';
 
 @NgModule({
   declarations: [
@@ -27,9 +28,10 @@ import { CommentComponent } from './comment/comment.component';
     PostsComponent,
     PostComponent,
     SafeHtmlPipe,
-    RelativeTimePipe,
+    DateFormatterPipe,
     AddCommentComponent,
-    CommentComponent
+    CommentComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,

@@ -21,5 +21,4 @@ export class PostComponent implements OnInit {
     this.post$ = this.firebaseService.getPostById(id);
     this.comments$ = this.firebaseService.getCommentsForPost(id);
   }
-
 }
