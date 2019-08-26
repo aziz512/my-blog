@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { CommentComponent } from './comment/comment.component';
 import { AddPostComponent } from './add-post/add-post.component';
+import { ReadPostComponent } from './read-post/read-post.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AddPostComponent } from './add-post/add-post.component';
     DateFormatterPipe,
     AddCommentComponent,
     CommentComponent,
-    AddPostComponent
+    AddPostComponent,
+    ReadPostComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,7 @@ import { AddPostComponent } from './add-post/add-post.component';
     ReactiveFormsModule,
     MatInputModule
   ],
-  providers: [FirebaseService],
+  providers: [FirebaseService, Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

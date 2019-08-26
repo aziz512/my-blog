@@ -7,11 +7,21 @@
     </div>
     <div>
       <mat-form-field class="full-width">
-        <textarea matInput cdkTextareaAutosize placeholder="Content" formControlName="text"></textarea>
+        <textarea matInput cdkTextareaAutosize placeholder="Content" formControlName="content"></textarea>
       </mat-form-field>
     </div>
     <div>
-      <button mat-stroked-button color="primary" type="submit">Post!</button>
+      <mat-form-field>
+        <input matInput placeholder="Tags (separated by comma)" formControlName="tags">
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-stroked-button color="primary" type="submit" (click)="submitPost()">Post!</button>
     </div>
   </form>
+</div>
+<hr>
+<h2>Preview</h2>
+<div>
+  <blog-post [post]="previewPost"></blog-post>
 </div>

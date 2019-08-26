@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './post/post.component';
 import { AddPostComponent } from './add-post/add-post.component';
+import { ReadPostComponent } from './read-post/read-post.component';
 
 
 const routes: Routes = [
@@ -11,8 +12,12 @@ const routes: Routes = [
     component: AddPostComponent
   },
   {
-    path: ':id',
-    component: PostComponent
+    path: 'tag/:tag',
+    component: PostsComponent
+  },
+  {
+    path: ':slug',
+    component: ReadPostComponent
   },
   {
     path: '',

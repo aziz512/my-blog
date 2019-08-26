@@ -1,4 +1,4 @@
-<div *ngIf="post$ | async; let post" class="post">
+<div *ngIf="post" class="post">
     <h1 class="post-title accent-color">{{post.title}}</h1>
     <div class="date">{{post.dateTime | dateFormat}}</div>
     <div [innerHTML]="post.content | safeHtml" class="post-content"></div>
@@ -7,7 +7,7 @@
       <h3>Comments:</h3>
     </div>
 
-    <div *ngIf="comments$ | async; let comments">
+    <div *ngIf="comments">
       <blog-comment *ngFor="let comment of comments" [comment]="comment"></blog-comment>
     </div>
     <blog-add-comment [postId]="post.id"></blog-add-comment>

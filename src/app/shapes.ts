@@ -5,6 +5,8 @@ export class BlogPost {
   description?: string;
   id: string;
   comments: Comment[];
+  tags: string[];
+  slug: string;
 }
 
 export class Comment {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BlogPost } from '../shapes';
 import { Observable } from 'rxjs';
 import { FirebaseService } from '../firebase.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'blog-posts',
@@ -10,7 +11,8 @@ import { FirebaseService } from '../firebase.service';
 })
 export class PostsComponent {
   posts: Observable<Array<BlogPost>>;
-  constructor(private firebaseService: FirebaseService) {
-    this.posts = this.firebaseService.getPosts();
+  constructor(private firebaseService: FirebaseService, private route: ActivatedRoute) {
+    const tag = this.route.snapshot.paramMap.get('tag');
+    this.posts = tag ? this.firebaseService.getPostsByTag(tag) : this.firebaseService.getPosts();
   }
 }
