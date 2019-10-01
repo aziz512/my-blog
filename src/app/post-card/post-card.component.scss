@@ -1,6 +1,11 @@
-.post-title:any-link {
-  text-decoration: none;
-  font-weight: 500;
+.post-title {
+  margin-bottom: 5px;
+  line-height: 40px;
+
+  a:any-link {
+    text-decoration: none;
+    font-weight: 600;
+  }
 }
 
 .post-card {
@@ -8,5 +13,16 @@
 }
 
 .date {
-  font-size: 12px;
+  font-size: 13px;
+}
+.read-more {
+  border-bottom: 2px solid #4169e1;
+  a:any-link {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.container {
+  margin-bottom: 20px;
 }

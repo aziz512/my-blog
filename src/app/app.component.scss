@@ -1,6 +1,6 @@
 .layout-container {
   display: grid;
-  grid-template-columns: auto 800px auto;
+  grid-template-columns: auto 700px auto;
 }
 
 .header {
@@ -40,6 +40,6 @@
     padding: 0 10px;
   }
 }
-
 .blog-title {
+  font-size: 25px;
 }

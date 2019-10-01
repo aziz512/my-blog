@@ -16,4 +16,24 @@ export class PostComponent {
   post: BlogPost;
   @Input()
   comments: Comment[];
+  @Input()
+  isSitePage: boolean;
+
+  sharePostOnSM(target: string) {
+    let url;
+    const pageURL = encodeURIComponent(window.location.href);
+    switch (target) {
+      case 'linkedin':
+        url = `https://www.linkedin.com/sharing/share-offsite/?url=${pageURL}`;
+        break;
+      case 'facebook':
+        url = `https://www.facebook.com/sharer/sharer.php?href=${pageURL}`;
+        break;
+      default:
+        url = `https://twitter.com/intent/tweet?text=${this.post.title}&url=${pageURL}`;
+        break;
+    }
+
+    window.open(url, 'Share', 'width=550, height=250');
+  }
 }

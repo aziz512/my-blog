@@ -1,6 +1,13 @@
-<div>
-  <h1><a class="post-title accent-color" routerLink="/{{post.slug}}">{{post.title}}</a></h1>
+<div class="container">
+  <h1 class="post-title">
+    <a class="accent-color" routerLink="/post/{{post.slug}}">{{post.title}}</a>
+  </h1>
   <div class="date">
     {{post.dateTime | dateFormat}}
+  </div>
+  <div>
+    <span [innerHTML]="post.content | excerptify | safeHtml"></span>...
+    <br>
+    <span><strong class="read-more"><a routerLink="/post/{{post.slug}}">Read more</a></strong></span>
   </div>
 </div>

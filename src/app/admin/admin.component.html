@@ -1,0 +1,19 @@
+<button mat-stroked-button color="primary" routerLink="/admin/add">New</button>
+<div class="search">
+  Search: <input type="text" (input)="searchFieldValueChange($event.target.value)" />
+</div>
+<div>
+  <h2>Posts:</h2>
+  <div *ngFor="let post of ($filteredPosts | async)" class="post-entry">
+    <a routerLink="/post/{{post.slug}}">{{post.title}}</a>
+    <button routerLink="/admin/edit/{{post.id}}">Edit</button>
+    <button (click)="deletePost(post.id, false)">Delete</button>
+  </div>
+
+  <h2>Pages:</h2>
+  <div *ngFor="let page of ($pages | async)" class="post-entry">
+    <a routerLink="/{{page.slug}}">{{page.title}}</a>
+    <button routerLink="/admin/edit/{{page.id}}" [queryParams]="{isPage: true}">Edit</button>
+    <button (click)="deletePost(page.id, true)">Delete</button>
+  </div>
+</div>

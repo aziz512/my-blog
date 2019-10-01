@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BlogPost, Comment } from '../shapes';
 import { FirebaseService } from '../firebase.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -13,16 +13,31 @@ import { Title } from '@angular/platform-browser';
 export class ReadPostComponent implements OnInit {
   post$: Observable<BlogPost>;
   comments$: Observable<Comment[]>;
+  isSitePage = false;
 
-  constructor(private firebaseService: FirebaseService, private route: ActivatedRoute, private titleService: Title) {
+  constructor(private firebaseService: FirebaseService, private route: ActivatedRoute,
+              private titleService: Title, private router: Router) {
   }
 
   async ngOnInit() {
-    const slug = this.route.snapshot.paramMap.get('slug');
-    this.post$ = this.firebaseService.getPostBySlug(slug);
-    const { id, title } = await this.post$.toPromise();
-    this.comments$ = this.firebaseService.getCommentsForPost(id);
-    this.titleService.setTitle(title);
+    const currentRoute = this.route.snapshot;
+
+    let path: string;
+    this.isSitePage = currentRoute.url[0].path !== 'post';
+    if (this.isSitePage) {
+      path = 'pages';
+    }
+
+    const slug = currentRoute.paramMap.get('slug');
+    this.post$ = this.firebaseService.getPostBySlug(slug, path);
+    const post = await this.post$.toPromise();
+    if (!post) {
+      this.router.navigate(['']);
+      return;
+    }
+
+    this.titleService.setTitle(post.title + ' - Aziz Yokubjonov');
+    this.comments$ = !this.isSitePage ? this.firebaseService.getCommentsForPost(post.id) : null;
   }
 
 }

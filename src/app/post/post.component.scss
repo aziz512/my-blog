@@ -1,29 +1,44 @@
-.post-content {
-    font-size: 18px;
-    line-height: 30px;
-    font-weight: 200;
+.post {
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 200;
+}
 
-    img {
-      max-width: 100%;
-    }
+.post-content {
+  img {
+    max-width: 100%;
+  }
 }
 
 .post-title {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 36px;
   margin: 10px 0;
+  line-height: 40px;
 }
 
 .comment {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .comments-label {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 @media only screen and (max-width: 600px) {
-    .post-content {
-        padding: initial;
-    }
+  .post-content {
+    padding: initial;
+  }
+}
+.date {
+  font-size: 13px;
+}
+
+.share-links {
+  margin-top: 20px;
+  img {
+    width: 25px;
+    margin-right: 10px;
+    border-radius: 5px;
+  }
 }

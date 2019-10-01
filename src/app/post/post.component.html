@@ -1,14 +1,39 @@
 <div *ngIf="post" class="post">
-    <h1 class="post-title accent-color">{{post.title}}</h1>
+  <h1 class="post-title accent-color">{{post.title}}</h1>
+  <div *ngIf="!isSitePage">
     <div class="date">{{post.dateTime | dateFormat}}</div>
-    <div [innerHTML]="post.content | safeHtml" class="post-content"></div>
+  </div>
+  <div [innerHTML]="post.content | safeHtml" class="post-content"></div>
 
-    <div class="comments-label accent-color">
-      <h3>Comments:</h3>
+  <div class="share-links" *ngIf="!isSitePage">
+    <hr>
+    <strong>Like/dislike the article? Tell about it to your friends:</strong>
+    <div>
+      <span>
+        <a (click)="sharePostOnSM('twitter')">
+          <img src="assets/icons/twitter.png" alt="Share on Twitter">
+        </a>
+      </span>
+      <span>
+        <a (click)="sharePostOnSM('linkedin')">
+          <img src="assets/icons/linkedin.png" alt="Share on LinkedIn">
+        </a>
+      </span>
+      <span>
+        <a (click)="sharePostOnSM('facebook')">
+          <img src="assets/icons/facebook.png" alt="Share on facebook">
+        </a>
+      </span>
     </div>
+  </div>
 
+  <div *ngIf="!isSitePage">
+    <div class="comments-label accent-color">
+      <h2>Comments:</h2>
+    </div>
     <div *ngIf="comments">
       <blog-comment *ngFor="let comment of comments" [comment]="comment"></blog-comment>
     </div>
     <blog-add-comment [postId]="post.id"></blog-add-comment>
+  </div>
 </div>

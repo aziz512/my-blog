@@ -13,3 +13,7 @@ export function slugify(str: string) {
     .replace(/-+$/, '') // Trim - from end of text
     + '-' + Date.now().toString().slice(-4);
 }
+
+export const processTags = (tags: string[] | string) => {
+  return tags.toString().split(',').map((s: string) => s.toLowerCase().trim());
+};

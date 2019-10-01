@@ -47,3 +47,5 @@ Thumbs.db
 
 /src/app/firebase-config.ts
 firebase-debug.log
+
+/.firebase/

@@ -3,8 +3,10 @@
 
 
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 16px;
+    line-height: 26px;
+    font-weight: 200;
     // background-color: #fafafa;
     margin: 0;
 }
@@ -16,5 +18,10 @@ body {
 }
 
 .accent-color {
-  color: #003171;
+  color: #4169e1;
+}
+
+pre {
+  font-size: 15px;
+  font-family: "Courier New", Courier, monospace;
 }
