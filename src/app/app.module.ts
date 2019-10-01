@@ -1,4 +1,4 @@
-import { BrowserModule, Title } from '@angular/platform-browser';
+import { BrowserModule, Title, Meta } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -59,7 +59,7 @@ import { ExcerptifyPipe } from './excerptify.pipe';
     FormsModule,
     AngularFireAuthModule
   ],
-  providers: [FirebaseService, Title],
+  providers: [FirebaseService, Title, Meta],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

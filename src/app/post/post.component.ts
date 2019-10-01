@@ -3,6 +3,8 @@ import { FirebaseService } from '../firebase.service';
 import { BlogPost } from '../shapes';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Meta } from '@angular/platform-browser';
+import { textifyHtml } from '../utils';
 
 @Component({
   selector: 'blog-post',
@@ -12,8 +14,25 @@ import { Observable } from 'rxjs';
   encapsulation: ViewEncapsulation.None
 })
 export class PostComponent {
+  constructor(private meta: Meta) {
+
+  }
+
+  // tslint:disable-next-line: variable-name
+  private _post: BlogPost;
   @Input()
-  post: BlogPost;
+  set post(value: BlogPost) {
+    this._post = value;
+    if (value) {
+      this.meta.updateTag({ name: 'description', content: textifyHtml(value.content, 200) });
+      this.meta.updateTag({ name: 'keywords', content: value.tags.toString() });
+      this.meta.updateTag({ property: 'og:title', content: value.title });
+    }
+  }
+  get post() {
+    return this._post;
+  }
+
   @Input()
   comments: Comment[];
   @Input()

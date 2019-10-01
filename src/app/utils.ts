@@ -17,3 +17,9 @@ export function slugify(str: string) {
 export const processTags = (tags: string[] | string) => {
   return tags.toString().split(',').map((s: string) => s.toLowerCase().trim());
 };
+
+export const textifyHtml = (htmlString, limit = Number.MAX_VALUE): string => {
+  const container = document.createElement('div');
+  container.innerHTML = htmlString;
+  return container.innerText.substring(0, limit);
+};
