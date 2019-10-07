@@ -2,6 +2,12 @@
   <div>
     <mat-checkbox color="primary" [(ngModel)]="isSitePage">Site Page (i.e. About)</mat-checkbox>
   </div>
+  <div>
+    <details>
+      <summary>File upload</summary>
+      <blog-upload-file></blog-upload-file>
+    </details>
+  </div>
   <form [formGroup]="postForm">
     <div>
       <mat-form-field>

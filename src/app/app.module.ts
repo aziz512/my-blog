@@ -7,6 +7,7 @@ import { AngularFireModule } from '@angular/fire';
 import { firebaseConfig } from 'src/app/firebase-config';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,6 +28,7 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { AdminComponent } from './admin/admin.component';
 import { ExcerptifyPipe } from './excerptify.pipe';
+import { UploadFileComponent } from './upload-file/upload-file.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { ExcerptifyPipe } from './excerptify.pipe';
     AddPostComponent,
     EditPostComponent,
     AdminComponent,
-    ExcerptifyPipe
+    ExcerptifyPipe,
+    UploadFileComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,8 @@ import { ExcerptifyPipe } from './excerptify.pipe';
     MatInputModule,
     MatCheckboxModule,
     FormsModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireStorageModule
   ],
   providers: [FirebaseService, Title, Meta],
   bootstrap: [AppComponent]

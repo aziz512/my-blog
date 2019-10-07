@@ -1,0 +1,17 @@
+<div>
+  Upload your file (please below 10 mb): <input type="file" multiple (input)="onNewFileChosen($event)">
+</div>
+<div>
+  <div *ngFor="let file of currentFiles" class="file-block">
+    <div *ngIf="(file.percentage | async);let percentage">
+      <div *ngIf="percentage !== 100">
+        {{ percentage }}%
+      </div>
+    </div>
+    <div *ngIf="file.url | async">
+      <a [href]="file.url | async" target="_blank">
+        <img src="{{file.url | async}}" alt="{{file.fileName}}" class="preview-image">
+      </a>
+    </div>
+  </div>
+</div>

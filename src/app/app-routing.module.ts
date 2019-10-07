@@ -18,11 +18,13 @@ const routes: Routes = [
   },
   {
     path: 'admin/add',
-    component: AddPostComponent
+    component: AddPostComponent,
+    canActivate: [AdminAuthGuard]
   },
   {
     path: 'admin/edit/:id',
-    component: EditPostComponent
+    component: EditPostComponent,
+    canActivate: [AdminAuthGuard]
   },
   {
     path: 'tag/:tag',
