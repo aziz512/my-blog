@@ -19,7 +19,7 @@ export class FirebaseService {
         const data = a.payload.doc.data() as BlogPost;
         const id = a.payload.doc.id;
         return { ...data, id };
-      })));
+      })), take(1));
   }
   getPostsByTag(tag: string, path: string = this.postsDir) {
     return this.getPosts(ref => ref.where('tags', 'array-contains', tag), path);

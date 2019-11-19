@@ -1,3 +1,5 @@
+import * as textVersion from 'textversionjs';
+
 export function slugify(str: string) {
   const a = 'àáäâãåăæąçćčđďèéěėëêęğǵḧìíïîįłḿǹńňñòóöôœøṕŕřßşśšșťțùúüûǘůűūųẃẍÿýźžż·/_,:;';
   const b = 'aaaaaaaaacccddeeeeeeegghiiiiilmnnnnooooooprrsssssttuuuuuuuuuwxyyzzz------';
@@ -19,7 +21,6 @@ export const processTags = (tags: string[] | string) => {
 };
 
 export const textifyHtml = (htmlString, limit = Number.MAX_VALUE): string => {
-  const container = document.createElement('div');
-  container.innerHTML = htmlString;
-  return container.innerText.substring(0, limit);
+  const text = textVersion(htmlString);
+  return text.substring(0, limit);
 };

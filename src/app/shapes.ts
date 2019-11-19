@@ -12,5 +12,5 @@ export class BlogPost {
 export class Comment {
   text: string;
   dateTime: number;
-  author: string;
+  userUID: string;
 }

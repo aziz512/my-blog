@@ -2,10 +2,13 @@
     <mat-card-title>
         <span>Add yours:</span>
     </mat-card-title>
-    <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
-        <mat-form-field>
-            <input matInput placeholder="Your name" formControlName="name">
-        </mat-form-field>
+    <div *ngIf="!(currentUser | async)">
+      <button mat-stroked-button color="primary" (click)="signIn()">Sign in with Google to comment</button>
+    </div>
+    <form [formGroup]="commentForm" (ngSubmit)="onSubmit()" *ngIf="currentUser | async; let user">
+        <div>
+          Commenting as <span class="display-name">{{user.displayName}}</span>, <a class="sign-out" (click)="signOut()">sign out?</a>
+        </div>
         <mat-form-field class="full-width">
             <textarea matInput cdkTextareaAutosize placeholder="Your thoughts" formControlName="text"></textarea>
         </mat-form-field>

@@ -15,8 +15,5 @@ export class PostsComponent {
   constructor(private firebaseService: FirebaseService, private route: ActivatedRoute, private meta: Meta) {
     const tag = this.route.snapshot.paramMap.get('tag');
     this.posts = tag ? this.firebaseService.getPostsByTag(tag) : this.firebaseService.getPosts();
-
-    this.meta.removeTag('name = "description"');
-    this.meta.removeTag('name= "keywords"');
   }
 }

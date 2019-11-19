@@ -14,9 +14,7 @@ import { textifyHtml } from '../utils';
   encapsulation: ViewEncapsulation.None
 })
 export class PostComponent {
-  constructor(private meta: Meta) {
-
-  }
+  constructor(private meta: Meta) { }
 
   // tslint:disable-next-line: variable-name
   private _post: BlogPost;
@@ -26,6 +24,7 @@ export class PostComponent {
     if (value) {
       this.meta.updateTag({ name: 'description', content: textifyHtml(value.content, 200) });
       this.meta.updateTag({ name: 'keywords', content: value.tags.toString() });
+      this.meta.updateTag({ name: 'og:description', content: textifyHtml(value.content, 200) });
       this.meta.updateTag({ property: 'og:title', content: value.title });
     }
   }

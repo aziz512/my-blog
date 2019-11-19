@@ -49,7 +49,7 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
     UploadFileComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,

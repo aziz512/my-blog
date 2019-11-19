@@ -1,5 +1,6 @@
 .container {
     margin-top: 20px;
+    margin-bottom: 50px;
 }
 
 
@@ -10,3 +11,12 @@
 textarea {
     resize: vertical;
 }
+.sign-out {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.display-name {
+  font-weight: 400;
+}
+
