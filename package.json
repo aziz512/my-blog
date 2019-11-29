@@ -14,7 +14,8 @@
     "build-dev:ssr": "npm run build-dev:client-and-server-bundles && npm run compile:server",
     "build:client-and-server-bundles": "ng build --prod && ng run my-blog:server:production --bundleDependencies none",
     "build-dev:client-and-server-bundles": "ng build && ng run my-blog:server:production --bundleDependencies none",
-    "start:ssr": "npm run build-dev:ssr && npm run serve:ssr"
+    "start:ssr": "npm run build-dev:ssr && npm run serve:ssr",
+    "postinstall": "npm run build:ssr"
   },
   "private": true,
   "dependencies": {
