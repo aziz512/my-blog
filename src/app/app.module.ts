@@ -1,4 +1,4 @@
-import { BrowserModule, Title, Meta } from '@angular/platform-browser';
+import { BrowserModule, Title, Meta, BrowserTransferStateModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,6 +8,7 @@ import { firebaseConfig } from 'src/app/firebase-config';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireFunctionsModule, FUNCTIONS_ORIGIN } from '@angular/fire/functions';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,6 +30,7 @@ import { EditPostComponent } from './edit-post/edit-post.component';
 import { AdminComponent } from './admin/admin.component';
 import { ExcerptifyPipe } from './excerptify.pipe';
 import { UploadFileComponent } from './upload-file/upload-file.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -46,10 +48,12 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
     EditPostComponent,
     AdminComponent,
     ExcerptifyPipe,
-    UploadFileComponent
+    UploadFileComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserTransferStateModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
@@ -61,9 +65,10 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
     MatCheckboxModule,
     FormsModule,
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AngularFireFunctionsModule
   ],
-  providers: [FirebaseService, Title, Meta],
+  providers: [FirebaseService, Title, Meta, { provide: FUNCTIONS_ORIGIN, useValue: 'http://localhost:5001' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,6 +8,7 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminAuthGuard } from './admin-auth.guard';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'post/:slug',
     component: ReadPostComponent
+  },
+  {
+    path: '404',
+    component: NotFoundComponent
   },
   {
     path: ':slug',

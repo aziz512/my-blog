@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { BlogPost } from '../shapes';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { FirebaseService } from '../firebase.service';
 import { ActivatedRoute } from '@angular/router';
-import { Meta } from '@angular/platform-browser';
+import { Meta, makeStateKey, TransferState } from '@angular/platform-browser';
+import { isPlatformServer, isPlatformBrowser } from '@angular/common';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'blog-posts',
@@ -12,8 +14,14 @@ import { Meta } from '@angular/platform-browser';
 })
 export class PostsComponent {
   posts: Observable<Array<BlogPost>>;
-  constructor(private firebaseService: FirebaseService, private route: ActivatedRoute, private meta: Meta) {
+  constructor(private firebaseService: FirebaseService, private route: ActivatedRoute, private meta: Meta,
+    // tslint:disable-next-line: ban-types
+              @Inject(PLATFORM_ID) private platformId: Object,
+              private state: TransferState) {
     const tag = this.route.snapshot.paramMap.get('tag');
-    this.posts = tag ? this.firebaseService.getPostsByTag(tag) : this.firebaseService.getPosts();
+    const dataSource = tag ? this.firebaseService.getPostsByTag(tag) : this.firebaseService.getPosts();
+    const dataKey = makeStateKey(`posts/${tag}`);
+
+    this.posts = firebaseService.getCachedObservable(dataSource, dataKey);
   }
 }

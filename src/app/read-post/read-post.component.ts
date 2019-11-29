@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional, Inject, PLATFORM_ID } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BlogPost, Comment } from '../shapes';
 import { FirebaseService } from '../firebase.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { Title, makeStateKey } from '@angular/platform-browser';
 
 @Component({
   selector: 'blog-read-post',
@@ -29,10 +29,12 @@ export class ReadPostComponent implements OnInit {
     }
 
     const slug = currentRoute.paramMap.get('slug');
-    this.post$ = this.firebaseService.getPostBySlug(slug, path);
+    const dataKey = makeStateKey(`post/${slug}/${path}`);
+    const $dataSource = this.firebaseService.getPostBySlug(slug, path);
+    this.post$ = this.firebaseService.getCachedObservable($dataSource, dataKey);
     const post = await this.post$.toPromise();
     if (!post) {
-      this.router.navigate(['']);
+      this.router.navigate(['404']);
       return;
     }
 

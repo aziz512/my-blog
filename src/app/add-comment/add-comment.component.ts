@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FirebaseService } from '../firebase.service';
-import { User } from 'firebase';
+import { User } from 'firebase/app';
 import { AuthService } from '../auth.service';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'blog-add-comment',
@@ -27,12 +28,11 @@ export class AddCommentComponent implements OnInit {
   }
 
   async onSubmit() {
-    const val = this.commentForm.value;
-    if (val.text) {
-
-    }
-    await this.firebase.postComment(val, this.postId);
-    this.commentForm.setValue({ text: '' });
+    this.currentUser.pipe(take(1)).subscribe(user => {
+      const comment = { ...this.commentForm.value, uid: user.uid };
+      this.firebase.postComment(comment, this.postId);
+      this.commentForm.setValue({ text: '' });
+    });
   }
 
   signIn() {
