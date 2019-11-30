@@ -1,8 +1,5 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
-import { FirebaseService } from '../firebase.service';
+import { Component, Input, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { BlogPost } from '../shapes';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Meta } from '@angular/platform-browser';
 import { textifyHtml } from '../utils';
 

@@ -3,7 +3,7 @@
   <div *ngIf="!isSitePage">
     <div class="date">{{post.dateTime | dateFormat}}</div>
   </div>
-  <div [innerHTML]="post.content | safeHtml" class="post-content"></div>
+  <div [innerHTML]="post.content | MDRenderer | safeHtml" class="post-content"></div>
 
   <div class="share-links" *ngIf="!isSitePage">
     <hr>

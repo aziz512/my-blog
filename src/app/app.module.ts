@@ -31,6 +31,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ExcerptifyPipe } from './excerptify.pipe';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MarkdownRendererPipe } from './markdown-renderer.pipe';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AdminComponent,
     ExcerptifyPipe,
     UploadFileComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    MarkdownRendererPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
