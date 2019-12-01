@@ -9,7 +9,8 @@ const md = markdownIt({
   },
   breaks: true,
   xhtmlOut: true,
-  typographer: true
+  typographer: true,
+  html: true
 });
 
 @Pipe({
