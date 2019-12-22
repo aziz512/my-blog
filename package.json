@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "npm run build:ssr",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -14,8 +14,7 @@
     "build-dev:ssr": "npm run build-dev:client-and-server-bundles && npm run compile:server",
     "build:client-and-server-bundles": "ng build --prod && ng run my-blog:server:production --bundleDependencies none",
     "build-dev:client-and-server-bundles": "ng build && ng run my-blog:server:production --bundleDependencies none",
-    "start:ssr": "npm run build-dev:ssr && npm run serve:ssr",
-    "postinstall": "npm run build:ssr"
+    "start:ssr": "npm run build-dev:ssr && npm run serve:ssr"
   },
   "private": true,
   "dependencies": {
