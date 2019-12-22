@@ -8,7 +8,7 @@ import { firebaseConfig } from 'src/app/firebase-config';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireFunctionsModule, FUNCTIONS_ORIGIN } from '@angular/fire/functions';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -32,6 +32,7 @@ import { ExcerptifyPipe } from './excerptify.pipe';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MarkdownRendererPipe } from './markdown-renderer.pipe';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,7 @@ import { MarkdownRendererPipe } from './markdown-renderer.pipe';
     AngularFireStorageModule,
     AngularFireFunctionsModule
   ],
-  providers: [FirebaseService, Title, Meta, { provide: FUNCTIONS_ORIGIN, useValue: 'http://localhost:5001' }],
+  providers: [FirebaseService, Title, Meta, environment.FirebaseFunctionsOriginProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
