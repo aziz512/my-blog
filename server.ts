@@ -19,9 +19,12 @@ import 'zone.js/dist/zone-node';
 
 import * as express from 'express';
 import {join} from 'path';
+import * as compression from 'compression';
 
 // Express server
 const app = express();
+
+app.use(compression({ level: 9}));
 
 const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), 'dist/browser');
