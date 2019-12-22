@@ -8,7 +8,7 @@ import { firebaseConfig } from 'src/app/firebase-config';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireFunctionsModule } from '@angular/fire/functions';
+import { AngularFireFunctionsModule, FUNCTIONS_ORIGIN } from '@angular/fire/functions';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -71,7 +71,7 @@ import { environment } from '../environments/environment';
     AngularFireStorageModule,
     AngularFireFunctionsModule
   ],
-  providers: [FirebaseService, Title, Meta, environment.FirebaseFunctionsOriginProvider],
+  providers: [FirebaseService, Title, Meta, { provide: FUNCTIONS_ORIGIN, useValue: environment.functionsOrigin }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
