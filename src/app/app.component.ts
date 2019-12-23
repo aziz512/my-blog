@@ -7,6 +7,7 @@ import { Meta } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  currentYear: number = (new Date()).getFullYear();
   constructor(private meta: Meta) {
     this.meta.updateTag({ name: 'author', content: 'Aziz Yokubjonov' });
   }
