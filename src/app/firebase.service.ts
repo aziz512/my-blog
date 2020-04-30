@@ -1,11 +1,11 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { AngularFirestore, Query } from '@angular/fire/firestore';
 import { BlogPost, Comment } from './shapes';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, take, startWith } from 'rxjs/operators';
 import { AngularFireFunctions } from '@angular/fire/functions';
 import { isPlatformServer, isPlatformBrowser } from '@angular/common';
-import { TransferState } from '@angular/platform-browser';
+import { TransferState, StateKey } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -72,19 +72,16 @@ export class FirebaseService {
     }
   }
 
-  getCachedObservable(dataSource, dataKey) {
+  getCachedObservable(dataSource: Observable<any>, dataKey: StateKey<any>) {
     if (isPlatformServer(this.platformId)) {
       return dataSource.pipe(map(datum => {
         this.state.set(dataKey, datum);
         return datum;
       }), take(1));
     } else if (isPlatformBrowser(this.platformId)) {
-      const SSRedValue = this.state.get(dataKey, null);
-      if (SSRedValue === null) {
-        return dataSource;
-      } else {
-        return (new BehaviorSubject<any>(SSRedValue)).pipe(take(1));
-      }
+      const savedValue = this.state.get(dataKey, null);
+      const observableToReturn = savedValue === null ? dataSource : dataSource.pipe(startWith(savedValue), take(1));
+      return observableToReturn;
     }
   }
 }
